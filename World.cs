@@ -19,5 +19,12 @@ public class World : Node2D
 		laser.GlobalPosition = location;
 		AddChild(laser);
 	}
+	
+	public void _on_ShootingEnemy_spawnLaser(PackedScene Laser, Vector2 location) 
+	{
+		var laser = Laser.Instance<Area2D>();
+		laser.GlobalPosition = location;
+		AddChild(laser);
+	}
 
 }
