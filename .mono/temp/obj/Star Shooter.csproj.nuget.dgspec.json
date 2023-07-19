@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/praveenr/Desktop/Godot/Star Shooter/Star Shooter.csproj": {}
+  },
+  "projects": {
+    "/Users/praveenr/Desktop/Godot/Star Shooter/Star Shooter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/praveenr/Desktop/Godot/Star Shooter/Star Shooter.csproj",
+        "projectName": "Star Shooter",
+        "projectPath": "/Users/praveenr/Desktop/Godot/Star Shooter/Star Shooter.csproj",
+        "packagesPath": "/Users/praveenr/.nuget/packages/",
+        "outputPath": "/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/praveenr/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

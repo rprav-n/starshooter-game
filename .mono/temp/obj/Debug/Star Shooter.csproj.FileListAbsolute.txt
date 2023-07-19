@@ -1,0 +1,9 @@
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/bin/Debug/Star Shooter.dll
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/bin/Debug/Star Shooter.pdb
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.csproj.AssemblyReference.cache
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.GeneratedMSBuildEditorConfig.editorconfig
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.AssemblyInfoInputs.cache
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.AssemblyInfo.cs
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.csproj.CoreCompileInputs.cache
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.dll
+/Users/praveenr/Desktop/Godot/Star Shooter/.mono/temp/obj/Debug/Star Shooter.pdb

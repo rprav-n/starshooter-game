@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1i262Be4yVEK/ZNvkKy/AyFFo2R9ocZpFcu7NnlM0q9px9NoULQhW9oWIHo+NcKcJW091UpCjqTWQ1+BtY8kPA==",
+  "success": true,
+  "projectFilePath": "/Users/praveenr/Desktop/Godot/Star Shooter/Star Shooter.csproj",
+  "expectedPackageFiles": [
+    "/Users/praveenr/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/Users/praveenr/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.3/microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
