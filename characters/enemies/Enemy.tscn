@@ -4,6 +4,7 @@
 
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 script = ExtResource( 1 )
+points = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 

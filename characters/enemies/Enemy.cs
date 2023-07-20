@@ -12,10 +12,12 @@ public class Enemy : Area2D
 	[Export]
 	private int damage = 1;
 
-	public override void _Ready()
-	{
+	[Export]
+	private int points = 0;
 
-	}
+	[Signal]
+	private delegate void enemyDied(int points);
+	
 
 	public override void _PhysicsProcess(float delta)
 	{
@@ -40,6 +42,7 @@ public class Enemy : Area2D
 		if (hp <=0 )
 		{
 			QueueFree();
+			this.EmitSignal("enemyDied", points);
 		}
 	}
 }
