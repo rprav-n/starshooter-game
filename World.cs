@@ -38,5 +38,11 @@ public class World : Node2D
 		}
 		
 	}
+	
+	public void _on_DeadZone_area_entered(Area2D area) 
+	{
+		GD.Print("Deleting " + area.Name);
+		area.QueueFree();
+	}
 
 }
