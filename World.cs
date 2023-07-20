@@ -26,5 +26,17 @@ public class World : Node2D
 		laser.GlobalPosition = location;
 		AddChild(laser);
 	}
+	
+	public void _on_EnemySpawner_spawnEnemy(PackedScene Enemy, Vector2 location) 
+	{
+		var enemy = Enemy.Instance<Area2D>();
+		enemy.GlobalPosition = location;
+		AddChild(enemy);
+		if (enemy.HasSignal("spawnLaser"))  
+		{
+			enemy.Connect("spawnLaser", this, "_on_ShootingEnemy_spawnLaser");
+		}
+		
+	}
 
 }
