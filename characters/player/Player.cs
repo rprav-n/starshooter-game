@@ -17,6 +17,10 @@ public class Player : Area2D
 	
 	[Signal]
 	public delegate void spawnLaser(PackedScene packedScene, Vector2 location);
+	
+	[Signal]
+	public delegate void playerTookDamage(int hpLeft);
+	
 	private Position2D muzzle;
 
 	public override void _Ready()
@@ -64,6 +68,7 @@ public class Player : Area2D
 	public void takeDamage(int damage) 
 	{
 		hp -= damage;
+		this.EmitSignal("playerTookDamage", hp);
 		if (hp <=0 )
 		{
 			QueueFree();

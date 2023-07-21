@@ -1,4 +1,4 @@
-	using Godot;
+using Godot;
 using System;
 
 public class World : Node2D
@@ -13,6 +13,7 @@ public class World : Node2D
 		HUDScene = GD.Load<PackedScene>("res://ui/HUD.tscn");
 		hud = GetNode<HUD>("HUD");
 		updateScoreAndHUD(0);
+		hud.UpdateLives(3);
 	}
 
 	public void _on_Player_spawnLaser(PackedScene Laser, Vector2 location) 
@@ -59,6 +60,11 @@ public class World : Node2D
 		GD.Print("hud", hud == null);
 		hud.updateScore(score);
 		
+	}
+	
+	public void _on_Player_playerTookDamage(int hpLeft) 
+	{
+		hud.UpdateLives(hpLeft);
 	}
 
 }
