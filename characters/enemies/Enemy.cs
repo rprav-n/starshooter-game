@@ -17,7 +17,13 @@ public class Enemy : Area2D
 
 	[Signal]
 	private delegate void enemyDied(int points);
-	
+	private AudioStreamPlayer hitSound;
+
+	public override void _Ready()
+	{
+		hitSound = GetNode<AudioStreamPlayer>("HitSound");
+	}
+
 
 	public override void _PhysicsProcess(float delta)
 	{
@@ -39,6 +45,7 @@ public class Enemy : Area2D
 	public void takeDamage(int damage) 
 	{
 		hp -= damage;
+		hitSound.Play();
 		if (hp <=0 )
 		{
 			QueueFree();

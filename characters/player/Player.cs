@@ -22,11 +22,16 @@ public class Player : Area2D
 	public delegate void playerTookDamage(int hpLeft);
 	
 	private Position2D muzzle;
+	private AudioStreamPlayer hitSound;
+	private AudioStreamPlayer laserSound;
 
 	public override void _Ready()
 	{
 		muzzle = GetNode<Position2D>("Muzzle");
 		Laser = GD.Load<PackedScene>("res://projectiles/PlayerLaser.tscn");
+		
+		hitSound = GetNode<AudioStreamPlayer>("HitSound");
+		laserSound = GetNode<AudioStreamPlayer>("LaserSound");
 	}
 	
 
@@ -53,6 +58,7 @@ public class Player : Area2D
 			// var laser = Laser.Instance<Area2D>();
 			// laser.GlobalPosition = this.GlobalPosition;
 			// AddChild(laser);
+			laserSound.Play();
 			this.EmitSignal("spawnLaser", Laser, muzzle.GlobalPosition);
 		}
 	}
@@ -68,6 +74,7 @@ public class Player : Area2D
 	public void takeDamage(int damage) 
 	{
 		hp -= damage;
+		hitSound.Play();
 		this.EmitSignal("playerTookDamage", hp);
 		if (hp <=0 )
 		{
