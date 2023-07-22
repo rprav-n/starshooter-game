@@ -11,6 +11,8 @@ public class World : Node2D
 	private PackedScene GameOverScene;
 	private CanvasLayer uiLayer;
 
+	private Explosion explosion;
+
 	public override void _Ready()
 	{
 		score = 0;
@@ -22,6 +24,8 @@ public class World : Node2D
 		enemySpawner = GetNode<EnemySpawner>("EnemySpawner");
 		GameOverScene = GD.Load<PackedScene>("res://ui/GameOverMenu.tscn");
 		uiLayer = GetNode<CanvasLayer>("UILayer");
+		
+		explosion = GetNode<Explosion>("EffectsLayer/Explosion");
 	}
 
 	public void _on_Player_spawnLaser(PackedScene Laser, Vector2 location) 
@@ -57,9 +61,10 @@ public class World : Node2D
 		area.QueueFree();
 	}
 	
-	public void _on_EnemyDied(int points) 
+	public void _on_EnemyDied(int points, Vector2 location) 
 	{
 		updateScoreAndHUD(points);
+		createExplosion(location);
 	}
 	
 	public void updateScoreAndHUD(int points) 
@@ -75,8 +80,9 @@ public class World : Node2D
 	}
 
 	// Player died, show Game over screen
-	public void _on_Player_playerDied() 
-	{
+	public void _on_Player_playerDied(Vector2 location) 
+	{	
+		createExplosion(location);
 		var timer = GetTree().CreateTimer(3);
 		timer.Connect("timeout", this, "_on_TimerComplete");
 	}
@@ -93,5 +99,11 @@ public class World : Node2D
 		var gameOverMenu = GameOverScene.Instance<GameOverMenu>();
 		uiLayer.AddChild(gameOverMenu);
 		gameOverMenu.setScore(score);
+	}
+	
+	public void createExplosion(Vector2 location) 
+	{
+		explosion.GlobalPosition = location;
+		explosion.start();
 	}
 }

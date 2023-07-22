@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/explode.wav" type="AudioStream" id=1]
+[ext_resource path="res://effects/Explosion.cs" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.217877, 1 )
+colors = PoolColorArray( 0.933333, 0.338886, 0.0117647, 1, 0.933333, 0.368627, 0.027451, 0.0627451 )
+
+[node name="Explosion" type="CPUParticles2D"]
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 140.0
+initial_velocity_random = 0.5
+damping = 100.0
+damping_random = 0.5
+scale_amount = 5.0
+color_ramp = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

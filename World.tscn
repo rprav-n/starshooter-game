@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/background.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/bg_music.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/star_texture.png" type="Texture" id=10]
+[ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 334.5, 41 )
@@ -90,6 +91,10 @@ autoplay = true
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="EffectsLayer" type="Node2D" parent="."]
+
+[node name="Explosion" parent="EffectsLayer" instance=ExtResource( 11 )]
 
 [connection signal="playerDied" from="Player" to="." method="_on_Player_playerDied"]
 [connection signal="playerTookDamage" from="Player" to="." method="_on_Player_playerTookDamage"]

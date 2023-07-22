@@ -26,7 +26,7 @@ public class Player : Area2D
 	private AudioStreamPlayer laserSound;
 
 	[Signal]
-	public delegate void playerDied();
+	public delegate void playerDied(Vector2 location);
 
 	public override void _Ready()
 	{
@@ -82,7 +82,7 @@ public class Player : Area2D
 		if (hp <=0 )
 		{
 			QueueFree();
-			this.EmitSignal("playerDied");
+			this.EmitSignal("playerDied", this.GlobalPosition);
 		}
 	}
 }

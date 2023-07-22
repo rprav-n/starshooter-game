@@ -16,7 +16,7 @@ public class Enemy : Area2D
 	private int points = 0;
 
 	[Signal]
-	private delegate void enemyDied(int points);
+	private delegate void enemyDied(int points, Vector2 location);
 	private AudioStreamPlayer hitSound;
 
 	public override void _Ready()
@@ -49,7 +49,7 @@ public class Enemy : Area2D
 		if (hp <=0 )
 		{
 			QueueFree();
-			this.EmitSignal("enemyDied", points);
+			this.EmitSignal("enemyDied", points, this.GlobalPosition);
 		}
 	}
 }
