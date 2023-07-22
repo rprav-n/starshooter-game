@@ -25,6 +25,9 @@ public class Player : Area2D
 	private AudioStreamPlayer hitSound;
 	private AudioStreamPlayer laserSound;
 
+	[Signal]
+	public delegate void playerDied();
+
 	public override void _Ready()
 	{
 		muzzle = GetNode<Position2D>("Muzzle");
@@ -79,6 +82,7 @@ public class Player : Area2D
 		if (hp <=0 )
 		{
 			QueueFree();
+			this.EmitSignal("playerDied");
 		}
 	}
 }

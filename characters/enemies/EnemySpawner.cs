@@ -13,6 +13,7 @@ public class EnemySpawner : Node2D
 	private Node2D spawnPositions;
 	private List<Position2D> spawnPositionArr = new List<Position2D>();
 	Random random = new Random();
+	private Timer spawnTimer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,6 +24,7 @@ public class EnemySpawner : Node2D
 		{
 			spawnPositionArr.Add(item as Position2D);
 		}
+		spawnTimer = GetNode<Timer>("SpawnTimer");
 	}
 	
 	public void _on_SpawnTimer_timeout() 
@@ -33,7 +35,6 @@ public class EnemySpawner : Node2D
 	public void spawnRandomEnemy() 
 	{
 		
-		GD.Print("SPAWN");
 		var randomEnemyIndex = random.Next(0, enemies.Count);
 		var randomEnemy = enemies[randomEnemyIndex];
 		
@@ -41,5 +42,10 @@ public class EnemySpawner : Node2D
 		var randomPosition = spawnPositionArr[randomSpawnPositionIndex];
 		
 		this.EmitSignal("spawnEnemy", randomEnemy, randomPosition.GlobalPosition);	
+	}
+	
+	public void StopSpwaning() 
+	{
+		spawnTimer.Stop();
 	}
 }

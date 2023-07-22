@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using System;
 
@@ -6,6 +7,9 @@ public class World : Node2D
 	private int score = 0;
 	private PackedScene HUDScene;
 	private HUD hud;
+	private EnemySpawner enemySpawner;
+	private PackedScene GameOverScene;
+	private CanvasLayer uiLayer;
 
 	public override void _Ready()
 	{
@@ -14,6 +18,10 @@ public class World : Node2D
 		hud = GetNode<HUD>("HUD");
 		updateScoreAndHUD(0);
 		hud.UpdateLives(3);
+		
+		enemySpawner = GetNode<EnemySpawner>("EnemySpawner");
+		GameOverScene = GD.Load<PackedScene>("res://ui/GameOverMenu.tscn");
+		uiLayer = GetNode<CanvasLayer>("UILayer");
 	}
 
 	public void _on_Player_spawnLaser(PackedScene Laser, Vector2 location) 
@@ -21,6 +29,7 @@ public class World : Node2D
 		var laser = Laser.Instance<Area2D>();
 		laser.GlobalPosition = location;
 		AddChild(laser);
+		
 	}
 	
 	public void _on_ShootingEnemy_spawnLaser(PackedScene Laser, Vector2 location) 
@@ -45,7 +54,6 @@ public class World : Node2D
 	
 	public void _on_DeadZone_area_entered(Area2D area) 
 	{
-		//GD.Print("Deleting " + area.Name);
 		area.QueueFree();
 	}
 	
@@ -57,7 +65,6 @@ public class World : Node2D
 	public void updateScoreAndHUD(int points) 
 	{
 		score += points;
-		GD.Print("hud", hud == null);
 		hud.updateScore(score);
 		
 	}
@@ -67,4 +74,24 @@ public class World : Node2D
 		hud.UpdateLives(hpLeft);
 	}
 
+	// Player died, show Game over screen
+	public void _on_Player_playerDied() 
+	{
+		var timer = GetTree().CreateTimer(3);
+		timer.Connect("timeout", this, "_on_TimerComplete");
+	}
+	
+	public void _on_TimerComplete() 
+	{
+		gameOver();
+	}
+	
+	public void gameOver() 
+	{
+
+		enemySpawner.StopSpwaning();
+		var gameOverMenu = GameOverScene.Instance<GameOverMenu>();
+		uiLayer.AddChild(gameOverMenu);
+		gameOverMenu.setScore(score);
+	}
 }

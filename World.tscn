@@ -68,12 +68,16 @@ position = Vector2( 0, -200 )
 position = Vector2( 273, 1254 )
 shape = SubResource( 1 )
 
-[node name="HUD" parent="." instance=ExtResource( 8 )]
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -10.0
+autoplay = true
 
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[connection signal="playerDied" from="Player" to="." method="_on_Player_playerDied"]
 [connection signal="playerTookDamage" from="Player" to="." method="_on_Player_playerTookDamage"]
 [connection signal="spawnLaser" from="Player" to="." method="_on_Player_spawnLaser"]
 [connection signal="spawnEnemy" from="EnemySpawner" to="." method="_on_EnemySpawner_spawnEnemy"]
